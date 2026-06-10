@@ -121,6 +121,34 @@
       padding: .25rem .65rem; border-radius: 4px;
     }
 
+    /* ━━━━━━━━━━━━━━━━━━━━ LANG SWITCHER ━━━━━━━━━━━━━━━━━━━━ */
+    .lang-switcher {
+      display: flex; align-items: center; gap: .25rem;
+      background: var(--surface-alt); border: 1px solid var(--border);
+      border-radius: 20px; padding: .2rem .3rem;
+    }
+    .lang-btn {
+      background: none; border: none; cursor: pointer;
+      font-family: var(--f-body); font-size: .75rem; font-weight: 700;
+      color: var(--text-muted); padding: .3rem .6rem; border-radius: 16px;
+      transition: background .18s, color .18s; line-height: 1;
+    }
+    .lang-btn:hover { color: var(--brand); }
+    .lang-btn.active {
+      background: var(--brand); color: #fff;
+    }
+    .lang-switcher-mobile {
+      display: flex; gap: .5rem; padding: .875rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .lang-btn-mobile {
+      flex: 1; background: var(--surface-alt); border: 1px solid var(--border);
+      border-radius: var(--r); padding: .5rem; cursor: pointer;
+      font-family: var(--f-body); font-size: .8rem; font-weight: 700;
+      color: var(--text-muted); transition: background .18s, color .18s;
+    }
+    .lang-btn-mobile.active { background: var(--brand); color: #fff; border-color: var(--brand); }
+
     /* ━━━━━━━━━━━━━━━━━━━━ NAV ━━━━━━━━━━━━━━━━━━━━ */
     #nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -676,6 +704,7 @@
 
       .nb-inner { gap: .5rem; }
       .nb-tag   { font-size: .72rem; padding: .25rem .65rem; }
+      .lang-switcher { display: none; }
     }
   </style>
 
@@ -703,27 +732,37 @@
         SAMGA<span>-NIITS</span>
       </a>
       <ul class="nav-links" role="list">
-        <li><a href="#why">Неге бізбен</a></li>
-        <li><a href="#services">Қызметтер</a></li>
-        <li><a href="#package">Пакет</a></li>
-        <li><a href="#ai">ЖИ технология</a></li>
-        <li><a href="#team">Команда</a></li>
-        <li><a href="#process">Бастау</a></li>
+        <li><a href="#why" data-i18n="nav.why">Неге бізбен</a></li>
+        <li><a href="#services" data-i18n="nav.services">Қызметтер</a></li>
+        <li><a href="#package" data-i18n="nav.package">Пакет</a></li>
+        <li><a href="#ai" data-i18n="nav.ai">ЖИ технология</a></li>
+        <li><a href="#team" data-i18n="nav.team">Команда</a></li>
+        <li><a href="#process" data-i18n="nav.process">Бастау</a></li>
       </ul>
-      <a href="#cta" class="nav-cta">Байланысу</a>
+      <div class="lang-switcher" role="group" aria-label="Тіл таңдау">
+        <button class="lang-btn active" data-lang="kk">ҚАЗ</button>
+        <button class="lang-btn" data-lang="ru">РУС</button>
+        <button class="lang-btn" data-lang="zh">中文</button>
+      </div>
+      <a href="#cta" class="nav-cta" data-i18n="nav.cta">Байланысу</a>
       <button class="nav-burger" aria-label="Мобильді мәзір" aria-expanded="false" id="burger">
         <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
   <nav class="nav-mobile" id="mobileMenu" aria-label="Мобильді мәзір">
-    <a href="#why">Неге бізбен</a>
-    <a href="#services">Қызметтер</a>
-    <a href="#package">Пакет</a>
-    <a href="#ai">ЖИ технология</a>
-    <a href="#team">Команда</a>
-    <a href="#process">Бастау</a>
-    <a href="#cta">Байланысу →</a>
+    <div class="lang-switcher-mobile">
+      <button class="lang-btn-mobile active" data-lang="kk">ҚАЗ</button>
+      <button class="lang-btn-mobile" data-lang="ru">РУС</button>
+      <button class="lang-btn-mobile" data-lang="zh">中文</button>
+    </div>
+    <a href="#why" data-i18n="nav.why">Неге бізбен</a>
+    <a href="#services" data-i18n="nav.services">Қызметтер</a>
+    <a href="#package" data-i18n="nav.package">Пакет</a>
+    <a href="#ai" data-i18n="nav.ai">ЖИ технология</a>
+    <a href="#team" data-i18n="nav.team">Команда</a>
+    <a href="#process" data-i18n="nav.process">Бастау</a>
+    <a href="#cta" data-i18n-html="nav.cta.arrow">Байланысу →</a>
   </nav>
 </header>
 
@@ -734,35 +773,35 @@
   <div class="container">
     <div class="hero-grid">
       <div>
-        <span class="hero-badge">🇰🇿 Қазақстан бойынша · Кез келген ниша · B2B дистрибуция</span>
-        <h1 class="hero-title" id="hero-title">
+        <span class="hero-badge" data-i18n="hero.badge">🇰🇿 Қазақстан бойынша · Кез келген ниша · B2B дистрибуция</span>
+        <h1 class="hero-title" id="hero-title" data-i18n-html="hero.title">
           Сіздің өніміңізді<br>бүкіл Қазақстан сатады
         </h1>
-        <p class="hero-sub">
+        <p class="hero-sub" data-i18n="hero.sub">
           Кез келген өніміңізді КР бойынша тұрақты көтерме клиенттерге жеткіземіз.
           ЖИ-маркетинг, дайын база, 100 сату арнасы — бір серіктестікте.
         </p>
         <div class="hero-btns">
-          <a href="#cta" class="btn btn-primary">Тегін кеңес алу →</a>
-          <a href="#package" class="btn btn-outline">Пакет туралы</a>
+          <a href="#cta" class="btn btn-primary" data-i18n="hero.btn1">Тегін кеңес алу →</a>
+          <a href="#package" class="btn btn-outline" data-i18n="hero.btn2">Пакет туралы</a>
         </div>
         <div class="hero-divider">
           <div class="hero-stats">
             <div>
               <span class="stat-num">100+</span>
-              <div class="stat-lbl">Сату арнасы</div>
+              <div class="stat-lbl" data-i18n="stat.channels">Сату арнасы</div>
             </div>
             <div>
               <span class="stat-num">16+</span>
-              <div class="stat-lbl">Жылдық тәжірибе</div>
+              <div class="stat-lbl" data-i18n="stat.exp">Жылдық тәжірибе</div>
             </div>
             <div>
               <span class="stat-num">17М ₸</span>
-              <div class="stat-lbl">Жылдық үнем</div>
+              <div class="stat-lbl" data-i18n="stat.save">Жылдық үнем</div>
             </div>
             <div>
               <span class="stat-num">500+</span>
-              <div class="stat-lbl">Пилот клиент</div>
+              <div class="stat-lbl" data-i18n="stat.clients">Пилот клиент</div>
             </div>
           </div>
         </div>
@@ -777,15 +816,15 @@
         <div class="hero-visual-badge">
           <div class="hvb-item">
             <div class="hvb-num">100+</div>
-            <div class="hvb-lbl">Сату арнасы</div>
+            <div class="hvb-lbl" data-i18n="stat.channels">Сату арнасы</div>
           </div>
           <div class="hvb-item">
             <div class="hvb-num">16+</div>
-            <div class="hvb-lbl">Жыл тәжірибе</div>
+            <div class="hvb-lbl" data-i18n="stat.exp">Жыл тәжірибе</div>
           </div>
           <div class="hvb-item">
             <div class="hvb-num">17М ₸</div>
-            <div class="hvb-lbl">Жылдық үнем</div>
+            <div class="hvb-lbl" data-i18n="stat.save">Жылдық үнем</div>
           </div>
         </div>
       </div>
@@ -797,16 +836,16 @@
 <div id="nichesbar" role="region" aria-label="Жұмыс істейтін нишалар">
   <div class="container">
     <div class="nb-inner">
-      <span class="nb-lbl">Нишалар:</span>
-      <span class="nb-tag">👜 Аксессуарлар</span>
-      <span class="nb-tag">👗 Киім</span>
-      <span class="nb-tag">🧴 Косметика</span>
-      <span class="nb-tag">🍎 Азық-түлік</span>
-      <span class="nb-tag">🏠 Үй тауары</span>
-      <span class="nb-tag">💊 Денсаулық</span>
-      <span class="nb-tag">🧸 Балалар тауары</span>
-      <span class="nb-tag">⚙️ Қосалқы бөлшек</span>
-      <span class="nb-tag">+ Кез келген өнім</span>
+      <span class="nb-lbl" data-i18n="niches.lbl">Нишалар:</span>
+      <span class="nb-tag" data-i18n="niches.1">👜 Аксессуарлар</span>
+      <span class="nb-tag" data-i18n="niches.2">👗 Киім</span>
+      <span class="nb-tag" data-i18n="niches.3">🧴 Косметика</span>
+      <span class="nb-tag" data-i18n="niches.4">🍎 Азық-түлік</span>
+      <span class="nb-tag" data-i18n="niches.5">🏠 Үй тауары</span>
+      <span class="nb-tag" data-i18n="niches.6">💊 Денсаулық</span>
+      <span class="nb-tag" data-i18n="niches.7">🧸 Балалар тауары</span>
+      <span class="nb-tag" data-i18n="niches.8">⚙️ Қосалқы бөлшек</span>
+      <span class="nb-tag" data-i18n="niches.9">+ Кез келген өнім</span>
     </div>
   </div>
 </div>
@@ -819,7 +858,7 @@
         <div class="icon-chip" aria-hidden="true">🗺️</div>
         <div>
           <div class="sb-num">17+</div>
-          <div class="sb-lbl">Облыс пен қала</div>
+          <div class="sb-lbl" data-i18n="sb.regions">Облыс пен қала</div>
         </div>
       </div>
       <div class="sb-div" aria-hidden="true"></div>
@@ -827,7 +866,7 @@
         <div class="icon-chip" aria-hidden="true">🤖</div>
         <div>
           <div class="sb-num">10</div>
-          <div class="sb-lbl">ЖИ маман орнын алмастырады</div>
+          <div class="sb-lbl" data-i18n="sb.ai">ЖИ маман орнын алмастырады</div>
         </div>
       </div>
       <div class="sb-div" aria-hidden="true"></div>
@@ -835,7 +874,7 @@
         <div class="icon-chip" aria-hidden="true">📦</div>
         <div>
           <div class="sb-num">$10–100</div>
-          <div class="sb-lbl">ЖИ жазылым айына</div>
+          <div class="sb-lbl" data-i18n="sb.sub">ЖИ жазылым айына</div>
         </div>
       </div>
       <div class="sb-div" aria-hidden="true"></div>
@@ -843,7 +882,7 @@
         <div class="icon-chip" aria-hidden="true">⏱️</div>
         <div>
           <div class="sb-num">2–3 апта</div>
-          <div class="sb-lbl">Стартқа дейін</div>
+          <div class="sb-lbl" data-i18n="sb.start">Стартқа дейін</div>
         </div>
       </div>
     </div>
@@ -854,9 +893,9 @@
 <section id="why" aria-labelledby="why-title">
   <div class="container">
     <div class="sec-header reveal">
-      <div class="sec-label">Неге бұл жұмыс істейді</div>
-      <h2 class="sec-title" id="why-title">Сіздің өніміңізге дайын нарық бар</h2>
-      <p class="sec-desc">
+      <div class="sec-label" data-i18n="why.lbl">Неге бұл жұмыс істейді</div>
+      <h2 class="sec-title" id="why-title" data-i18n="why.title">Сіздің өніміңізге дайын нарық бар</h2>
+      <p class="sec-desc" data-i18n="why.desc">
         Қазақстанның барлық қалалары мен облыстарындағы сіздің нишаңыздағы
         кәсіпкерлер мен магазиндердің толық базасы — бізде.
       </p>
@@ -890,9 +929,9 @@
 <section id="services" aria-labelledby="svc-title">
   <div class="container">
     <div class="sec-header reveal">
-      <div class="sec-label">Қызметтер</div>
-      <h2 class="sec-title" id="svc-title">Тек каталог емес — толыққанды инфрақұрылым</h2>
-      <p class="sec-desc">Өнімнен бастап соңғы клиентке дейін. Барлығы бір серіктестікте.</p>
+      <div class="sec-label" data-i18n="nav.services">Қызметтер</div>
+      <h2 class="sec-title" id="svc-title" data-i18n="svc.title">Тек каталог емес — толыққанды инфрақұрылым</h2>
+      <p class="sec-desc" data-i18n="svc.desc">Өнімнен бастап соңғы клиентке дейін. Барлығы бір серіктестікте.</p>
     </div>
     <div class="services-grid">
       <div class="card svc-card reveal reveal-delay-1">
@@ -939,9 +978,9 @@
 <section id="package" aria-labelledby="pkg-title">
   <div class="container">
     <div class="sec-header reveal">
-      <div class="sec-label">Серіктестік пакеті</div>
-      <h2 class="sec-title" id="pkg-title">Бір инвестиция — толық жүйе</h2>
-      <p class="sec-desc">Бір рет төлеп, өнімнен бастап соңғы клиентке дейінгі толық бизнес-инфрақұрылымды аласыз.</p>
+      <div class="sec-label" data-i18n="pkg.lbl">Серіктестік пакеті</div>
+      <h2 class="sec-title" id="pkg-title" data-i18n="pkg.title">Бір инвестиция — толық жүйе</h2>
+      <p class="sec-desc" data-i18n="pkg.desc">Бір рет төлеп, өнімнен бастап соңғы клиентке дейінгі толық бизнес-инфрақұрылымды аласыз.</p>
     </div>
     <div class="package-grid">
       <div class="card pkg-card reveal">
@@ -1002,9 +1041,9 @@
 <section id="ai" aria-labelledby="ai-title">
   <div class="container">
     <div class="sec-header reveal">
-      <div class="sec-label">Технология</div>
-      <h2 class="sec-title" id="ai-title">ЖИ не атқарады</h2>
-      <p class="sec-desc">
+      <div class="sec-label" data-i18n="ai.lbl">Технология</div>
+      <h2 class="sec-title" id="ai-title" data-i18n="ai.title">ЖИ не атқарады</h2>
+      <p class="sec-desc" data-i18n="ai.desc">
         10 маманның жұмысын бір жүйе атқарады. Ұйықтамайды, кешіктірмейді, ақша шашпайды.
       </p>
     </div>
@@ -1053,9 +1092,9 @@
 <section id="comparison" aria-labelledby="cmp-title">
   <div class="container">
     <div class="sec-header reveal">
-      <div class="sec-label">Тиімділік есебі</div>
-      <h2 class="sec-title" id="cmp-title">ЖИ-сіз қанша шығындайсыз?</h2>
-      <p class="sec-desc">Дәстүрлі маркетинг командасы мен біздің ЖИ жүйесінің айлық шығынын салыстырыңыз.</p>
+      <div class="sec-label" data-i18n="cmp.lbl">Тиімділік есебі</div>
+      <h2 class="sec-title" id="cmp-title" data-i18n="cmp.title">ЖИ-сіз қанша шығындайсыз?</h2>
+      <p class="sec-desc" data-i18n="cmp.desc">Дәстүрлі маркетинг командасы мен біздің ЖИ жүйесінің айлық шығынын салыстырыңыз.</p>
     </div>
     <div class="reveal">
       <div class="tbl-mob-note" aria-hidden="true">
@@ -1135,9 +1174,9 @@
 <section id="process" aria-labelledby="proc-title">
   <div class="container">
     <div class="sec-header reveal">
-      <div class="sec-label">Серіктестік жолы</div>
-      <h2 class="sec-title" id="proc-title">Қалай басталады</h2>
-      <p class="sec-desc">5 қадам — және сіздің өніміңіз Қазақстан бойынша сатылуда. Бастауға 30 минут жеткілікті.</p>
+      <div class="sec-label" data-i18n="proc.lbl">Серіктестік жолы</div>
+      <h2 class="sec-title" id="proc-title" data-i18n="proc.title">Қалай басталады</h2>
+      <p class="sec-desc" data-i18n="proc.desc">5 қадам — және сіздің өніміңіз Қазақстан бойынша сатылуда. Бастауға 30 минут жеткілікті.</p>
     </div>
     <div class="steps-row reveal">
       <div class="step-col">
@@ -1188,9 +1227,9 @@
 <section id="team" aria-labelledby="team-title">
   <div class="container">
     <div class="sec-header reveal">
-      <div class="sec-label">Команда</div>
-      <h2 class="sec-title" id="team-title">Жобаның артындағылар</h2>
-      <p class="sec-desc">SAMGA-NIITS — 16+ жылдық тәжірибемен нарықты жүйелейтін команда.</p>
+      <div class="sec-label" data-i18n="nav.team">Команда</div>
+      <h2 class="sec-title" id="team-title" data-i18n="team.title">Жобаның артындағылар</h2>
+      <p class="sec-desc" data-i18n="team.desc">SAMGA-NIITS — 16+ жылдық тәжірибемен нарықты жүйелейтін команда.</p>
     </div>
     <div class="team-grid">
 
@@ -1260,9 +1299,9 @@
 <section id="cases" aria-labelledby="cases-title">
   <div class="container">
     <div class="sec-header reveal">
-      <div class="sec-label">Жобалар мен кейстар</div>
-      <h2 class="sec-title" id="cases-title">Біздің веб-жобаларымыз</h2>
-      <p class="sec-desc">Команда іске асырған сайттар мен цифрлық платформалар — технологияны бизнеске айналдырған нақты мысалдар.</p>
+      <div class="sec-label" data-i18n="cases.lbl">Жобалар мен кейстар</div>
+      <h2 class="sec-title" id="cases-title" data-i18n="cases.title">Біздің веб-жобаларымыз</h2>
+      <p class="sec-desc" data-i18n="cases.desc">Команда іске асырған сайттар мен цифрлық платформалар — технологияны бизнеске айналдырған нақты мысалдар.</p>
     </div>
 
     <div class="cases-grid">
@@ -1420,9 +1459,9 @@
 <section id="cta" aria-labelledby="cta-title">
   <div class="container">
     <div class="cta-inner reveal">
-      <div class="sec-label">Байланыс</div>
-      <h2 class="sec-title" id="cta-title">Кездесуге дайынбыз</h2>
-      <p class="sec-desc">
+      <div class="sec-label" data-i18n="cta.lbl">Байланыс</div>
+      <h2 class="sec-title" id="cta-title" data-i18n="cta.title">Кездесуге дайынбыз</h2>
+      <p class="sec-desc" data-i18n="cta.desc">
         Алғашқы 30 минуттық кеңес — тегін. Нишаңызды, нарықты және серіктестік шарттарын талқыламыз.
       </p>
       <div class="cta-grid">
@@ -1450,15 +1489,15 @@
         <div class="cta-item">
           <div class="cta-icon" aria-hidden="true">📍</div>
           <div>
-            <div class="cta-lbl">Мекен-жай</div>
-            <div class="cta-val">Алматы, Қазақстан</div>
+            <div class="cta-lbl" data-i18n="cta.addr.lbl">Мекен-жай</div>
+            <div class="cta-val" data-i18n="cta.addr.val">Алматы, Қазақстан</div>
           </div>
         </div>
       </div>
-      <a href="https://wa.me/77717805442" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="font-size:1.05rem; padding:1rem 2.25rem">
+      <a href="https://wa.me/77717805442" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="font-size:1.05rem; padding:1rem 2.25rem" data-i18n="cta.wa">
         WhatsApp арқылы жазу →
       </a>
-      <p class="cta-note">
+      <p class="cta-note" data-i18n-html="cta.note">
         <strong>Алғашқы кеңес тегін.</strong> Ешқандай міндеттеме жоқ.
       </p>
     </div>
@@ -1473,11 +1512,11 @@
     <div class="foot-inner">
       <div class="foot-logo">SAMGA<span>-NIITS</span></div>
       <nav class="foot-links" aria-label="Футер навигациясы">
-        <a href="#why">Неге бізбен</a>
-        <a href="#services">Қызметтер</a>
-        <a href="#package">Пакет</a>
-        <a href="#team">Команда</a>
-        <a href="#cta">Байланыс</a>
+        <a href="#why" data-i18n="nav.why">Неге бізбен</a>
+        <a href="#services" data-i18n="nav.services">Қызметтер</a>
+        <a href="#package" data-i18n="nav.package">Пакет</a>
+        <a href="#team" data-i18n="nav.team">Команда</a>
+        <a href="#cta" data-i18n="cta.lbl">Байланыс</a>
       </nav>
       <div class="foot-copy">© 2025 SAMGA-NIITS LLP · Алматы, Қазақстан</div>
     </div>
@@ -1499,6 +1538,149 @@
 <button class="back-top" id="backTop" aria-label="Жоғарыға қайту">↑</button>
 
 <script>
+  /* ── TRANSLATIONS ── */
+  const T = {
+    kk: {
+      'nav.why':'Неге бізбен','nav.services':'Қызметтер','nav.package':'Пакет',
+      'nav.ai':'ЖИ технология','nav.team':'Команда','nav.process':'Бастау',
+      'nav.cta':'Байланысу','nav.cta.arrow':'Байланысу →',
+      'hero.badge':'🇰🇿 Қазақстан бойынша · Кез келген ниша · B2B дистрибуция',
+      'hero.title':'Сіздің өніміңізді<br>бүкіл Қазақстан сатады',
+      'hero.sub':'Кез келген өніміңізді КР бойынша тұрақты көтерме клиенттерге жеткіземіз. ЖИ-маркетинг, дайын база, 100 сату арнасы — бір серіктестікте.',
+      'hero.btn1':'Тегін кеңес алу →','hero.btn2':'Пакет туралы',
+      'stat.channels':'Сату арнасы','stat.exp':'Жылдық тәжірибе',
+      'stat.save':'Жылдық үнем','stat.clients':'Пилот клиент',
+      'niches.lbl':'Нишалар:','niches.1':'👜 Аксессуарлар','niches.2':'👗 Киім',
+      'niches.3':'🧴 Косметика','niches.4':'🍎 Азық-түлік','niches.5':'🏠 Үй тауары',
+      'niches.6':'💊 Денсаулық','niches.7':'🧸 Балалар тауары',
+      'niches.8':'⚙️ Қосалқы бөлшек','niches.9':'+ Кез келген өнім',
+      'sb.regions':'Облыс пен қала','sb.ai':'ЖИ маман орнын алмастырады',
+      'sb.sub':'ЖИ жазылым айына','sb.start':'Стартқа дейін',
+      'why.lbl':'Неге бұл жұмыс істейді','why.title':'Сіздің өніміңізге дайын нарық бар',
+      'why.desc':'Қазақстанның барлық қалалары мен облыстарындағы сіздің нишаңыздағы кәсіпкерлер мен магазиндердің толық базасы — бізде.',
+      'svc.title':'Тек каталог емес — толыққанды инфрақұрылым',
+      'svc.desc':'Өнімнен бастап соңғы клиентке дейін. Барлығы бір серіктестікте.',
+      'pkg.lbl':'Серіктестік пакеті','pkg.title':'Бір инвестиция — толық жүйе',
+      'pkg.desc':'Бір рет төлеп, өнімнен бастап соңғы клиентке дейінгі толық бизнес-инфрақұрылымды аласыз.',
+      'ai.lbl':'Технология','ai.title':'ЖИ не атқарады',
+      'ai.desc':'10 маманның жұмысын бір жүйе атқарады. Ұйықтамайды, кешіктірмейді, ақша шашпайды.',
+      'cmp.lbl':'Тиімділік есебі','cmp.title':'ЖИ-сіз қанша шығындайсыз?',
+      'cmp.desc':'Дәстүрлі маркетинг командасы мен біздің ЖИ жүйесінің айлық шығынын салыстырыңыз.',
+      'proc.lbl':'Серіктестік жолы','proc.title':'Қалай басталады',
+      'proc.desc':'5 қадам — және сіздің өніміңіз Қазақстан бойынша сатылуда. Бастауға 30 минут жеткілікті.',
+      'team.title':'Жобаның артындағылар',
+      'team.desc':'SAMGA-NIITS — 16+ жылдық тәжірибемен нарықты жүйелейтін команда.',
+      'cases.lbl':'Жобалар мен кейстар','cases.title':'Біздің веб-жобаларымыз',
+      'cases.desc':'Команда іске асырған сайттар мен цифрлық платформалар — технологияны бизнеске айналдырған нақты мысалдар.',
+      'cta.lbl':'Байланыс','cta.title':'Кездесуге дайынбыз',
+      'cta.desc':'Алғашқы 30 минуттық кеңес — тегін. Нишаңызды, нарықты және серіктестік шарттарын талқыламыз.',
+      'cta.addr.lbl':'Мекен-жай','cta.addr.val':'Алматы, Қазақстан',
+      'cta.wa':'WhatsApp арқылы жазу →',
+      'cta.note':'<strong>Алғашқы кеңес тегін.</strong> Ешқандай міндеттеме жоқ.',
+    },
+    ru: {
+      'nav.why':'Почему мы','nav.services':'Услуги','nav.package':'Пакет',
+      'nav.ai':'ИИ технологии','nav.team':'Команда','nav.process':'Начать',
+      'nav.cta':'Связаться','nav.cta.arrow':'Связаться →',
+      'hero.badge':'🇰🇿 По всему Казахстану · Любая ниша · B2B дистрибуция',
+      'hero.title':'Ваш продукт продаёт<br>весь Казахстан',
+      'hero.sub':'Доставляем любой ваш продукт оптовым клиентам по всему Казахстану. ИИ-маркетинг, готовая база, 100 каналов продаж — в одном партнёрстве.',
+      'hero.btn1':'Бесплатная консультация →','hero.btn2':'О пакете',
+      'stat.channels':'Каналов продаж','stat.exp':'Лет опыта',
+      'stat.save':'Годовая экономия','stat.clients':'Пилот клиентов',
+      'niches.lbl':'Ниши:','niches.1':'👜 Аксессуары','niches.2':'👗 Одежда',
+      'niches.3':'🧴 Косметика','niches.4':'🍎 Продукты','niches.5':'🏠 Товары для дома',
+      'niches.6':'💊 Здоровье','niches.7':'🧸 Детские товары',
+      'niches.8':'⚙️ Запчасти','niches.9':'+ Любой товар',
+      'sb.regions':'Областей и городов','sb.ai':'ИИ заменяет специалистов',
+      'sb.sub':'Подписка на ИИ в месяц','sb.start':'До запуска',
+      'why.lbl':'Почему это работает','why.title':'Для вашего продукта уже есть рынок',
+      'why.desc':'Полная база предпринимателей и магазинов в вашей нише по всем городам и областям Казахстана — у нас.',
+      'svc.title':'Не просто каталог — полная инфраструктура',
+      'svc.desc':'От товара до конечного клиента. Всё в одном партнёрстве.',
+      'pkg.lbl':'Партнёрский пакет','pkg.title':'Одна инвестиция — полная система',
+      'pkg.desc':'Заплатив один раз, вы получаете полную бизнес-инфраструктуру от товара до конечного клиента.',
+      'ai.lbl':'Технология','ai.title':'Что делает ИИ',
+      'ai.desc':'Одна система выполняет работу 10 специалистов. Не спит, не опаздывает, не тратит лишнее.',
+      'cmp.lbl':'Расчёт эффективности','cmp.title':'Сколько вы тратите без ИИ?',
+      'cmp.desc':'Сравните ежемесячные расходы на традиционную команду маркетинга и нашу ИИ систему.',
+      'proc.lbl':'Путь партнёрства','proc.title':'Как начать',
+      'proc.desc':'5 шагов — и ваш продукт продаётся по всему Казахстану. Достаточно 30 минут для старта.',
+      'team.title':'Люди за проектом',
+      'team.desc':'SAMGA-NIITS — команда, систематизирующая рынок с 16+ летним опытом.',
+      'cases.lbl':'Проекты и кейсы','cases.title':'Наши веб-проекты',
+      'cases.desc':'Сайты и цифровые платформы, реализованные командой — реальные примеры превращения технологий в бизнес.',
+      'cta.lbl':'Контакты','cta.title':'Готовы к встрече',
+      'cta.desc':'Первые 30 минут консультации — бесплатно. Обсудим вашу нишу, рынок и условия партнёрства.',
+      'cta.addr.lbl':'Адрес','cta.addr.val':'Алматы, Казахстан',
+      'cta.wa':'Написать в WhatsApp →',
+      'cta.note':'<strong>Первая консультация бесплатно.</strong> Никаких обязательств.',
+    },
+    zh: {
+      'nav.why':'为何选择我们','nav.services':'服务','nav.package':'套餐',
+      'nav.ai':'AI技术','nav.team':'团队','nav.process':'开始',
+      'nav.cta':'联系我们','nav.cta.arrow':'联系我们 →',
+      'hero.badge':'🇰🇿 遍布哈萨克斯坦 · 任何行业 · B2B分销',
+      'hero.title':'让全哈萨克斯坦<br>销售您的产品',
+      'hero.sub':'我们将您的任何产品发送给哈萨克斯坦各地的稳定批发客户。AI营销、现成数据库、100个销售渠道——尽在一个合作关系中。',
+      'hero.btn1':'免费咨询 →','hero.btn2':'了解套餐',
+      'stat.channels':'销售渠道','stat.exp':'年经验',
+      'stat.save':'年度节省','stat.clients':'试点客户',
+      'niches.lbl':'行业：','niches.1':'👜 配饰','niches.2':'👗 服装',
+      'niches.3':'🧴 美妆','niches.4':'🍎 食品','niches.5':'🏠 家居用品',
+      'niches.6':'💊 健康','niches.7':'🧸 儿童用品',
+      'niches.8':'⚙️ 零配件','niches.9':'+ 任何商品',
+      'sb.regions':'省市','sb.ai':'AI替代专业人员',
+      'sb.sub':'月AI订阅费','sb.start':'启动前',
+      'why.lbl':'为什么有效','why.title':'您的产品已有现成市场',
+      'why.desc':'哈萨克斯坦所有城市和地区您所在行业的企业家和商店的完整数据库——就在我们这里。',
+      'svc.title':'不只是目录——完整基础设施',
+      'svc.desc':'从产品到终端客户，一切尽在一个合作关系中。',
+      'pkg.lbl':'合作套餐','pkg.title':'一次投资——完整系统',
+      'pkg.desc':'一次付款，即可获得从产品到终端客户的完整商业基础设施。',
+      'ai.lbl':'技术','ai.title':'AI能做什么',
+      'ai.desc':'一个系统完成10位专家的工作。不睡觉、不迟到、不浪费钱。',
+      'cmp.lbl':'效益计算','cmp.title':'没有AI您要花多少钱？',
+      'cmp.desc':'比较传统营销团队与我们AI系统的每月费用。',
+      'proc.lbl':'合作流程','proc.title':'如何开始',
+      'proc.desc':'5个步骤——您的产品就能在哈萨克斯坦全国销售。30分钟即可启动。',
+      'team.title':'项目背后的人',
+      'team.desc':'SAMGA-NIITS——拥有16年以上经验、系统化市场的团队。',
+      'cases.lbl':'项目与案例','cases.title':'我们的网络项目',
+      'cases.desc':'团队实施的网站和数字平台——将技术转化为商业的真实案例。',
+      'cta.lbl':'联系','cta.title':'随时准备会面',
+      'cta.desc':'前30分钟咨询免费。我们将讨论您的行业、市场和合作条件。',
+      'cta.addr.lbl':'地址','cta.addr.val':'阿拉木图，哈萨克斯坦',
+      'cta.wa':'通过WhatsApp联系 →',
+      'cta.note':'<strong>首次咨询免费。</strong>没有任何义务。',
+    }
+  };
+
+  let currentLang = localStorage.getItem('lang') || 'kk';
+
+  function applyLang(lang) {
+    currentLang = lang;
+    localStorage.setItem('lang', lang);
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const k = el.getAttribute('data-i18n');
+      if (T[lang][k] !== undefined) el.textContent = T[lang][k];
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const k = el.getAttribute('data-i18n-html');
+      if (T[lang][k] !== undefined) el.innerHTML = T[lang][k];
+    });
+    document.querySelectorAll('.lang-btn, .lang-btn-mobile').forEach(b => {
+      b.classList.toggle('active', b.dataset.lang === lang);
+    });
+  }
+
+  document.querySelectorAll('.lang-btn, .lang-btn-mobile').forEach(btn => {
+    btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+  });
+
+  applyLang(currentLang);
+
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 10);
