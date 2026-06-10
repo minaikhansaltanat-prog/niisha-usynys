@@ -121,6 +121,18 @@
       padding: .25rem .65rem; border-radius: 4px;
     }
 
+    /* ━━━━━━━━━━━━━━━━━━━━ TEAM TAPLINK ━━━━━━━━━━━━━━━━━━━━ */
+    .team-taplink {
+      display: inline-flex; align-items: center; gap: .5rem;
+      margin-top: 1.25rem;
+      padding: .55rem 1.1rem; border-radius: var(--r);
+      border: 2px solid var(--brand); color: var(--brand);
+      font-size: .8rem; font-weight: 700; background: transparent;
+      transition: background .2s, color .2s;
+    }
+    .team-taplink:hover { background: var(--brand); color: #fff; }
+    .team-taplink svg { width: 14px; height: 14px; flex-shrink: 0; }
+
     /* ━━━━━━━━━━━━━━━━━━━━ LANG SWITCHER ━━━━━━━━━━━━━━━━━━━━ */
     .lang-switcher {
       display: flex; align-items: center; gap: .25rem;
@@ -148,6 +160,44 @@
       color: var(--text-muted); transition: background .18s, color .18s;
     }
     .lang-btn-mobile.active { background: var(--brand); color: #fff; border-color: var(--brand); }
+
+    /* Globe button — mobile nav */
+    .lang-globe-wrap {
+      display: none; position: relative;
+    }
+    .lang-globe-btn {
+      display: flex; align-items: center; gap: .3rem;
+      background: var(--surface-alt); border: 1px solid var(--border);
+      border-radius: var(--r); padding: .45rem .65rem;
+      font-family: var(--f-body); font-size: .78rem; font-weight: 700;
+      color: var(--text); cursor: pointer; line-height: 1;
+      transition: border-color .18s, color .18s;
+    }
+    .lang-globe-btn:hover { border-color: var(--brand); color: var(--brand); }
+    .lang-globe-btn svg { width: 15px; height: 15px; flex-shrink: 0; }
+    .lang-globe-btn .chevron { width: 11px; height: 11px; transition: transform .2s; }
+    .lang-globe-btn.open .chevron { transform: rotate(180deg); }
+    #langCode { font-size: .72rem; }
+
+    .lang-globe-dropdown {
+      display: none; position: absolute;
+      top: calc(100% + .5rem); right: 0;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r-lg); padding: .35rem;
+      min-width: 148px; z-index: 200;
+      box-shadow: 0 8px 28px rgba(0,0,0,.13);
+    }
+    .lang-globe-dropdown.open { display: block; }
+    .lang-drop-item {
+      display: flex; align-items: center; gap: .55rem;
+      width: 100%; padding: .6rem .875rem;
+      background: none; border: none; cursor: pointer;
+      font-family: var(--f-body); font-size: .875rem; font-weight: 500;
+      color: var(--text-muted); border-radius: 8px; text-align: left;
+      transition: background .15s, color .15s;
+    }
+    .lang-drop-item:hover { background: var(--brand-light); color: var(--brand-dark); }
+    .lang-drop-item.active { background: var(--brand-light); color: var(--brand-dark); font-weight: 700; }
 
     /* ━━━━━━━━━━━━━━━━━━━━ NAV ━━━━━━━━━━━━━━━━━━━━ */
     #nav {
@@ -705,6 +755,7 @@
       .nb-inner { gap: .5rem; }
       .nb-tag   { font-size: .72rem; padding: .25rem .65rem; }
       .lang-switcher { display: none; }
+      .lang-globe-wrap { display: block; }
     }
   </style>
 
@@ -743,6 +794,18 @@
         <button class="lang-btn active" data-lang="kk">ҚАЗ</button>
         <button class="lang-btn" data-lang="ru">РУС</button>
         <button class="lang-btn" data-lang="zh">中文</button>
+      </div>
+      <div class="lang-globe-wrap" id="langGlobeWrap">
+        <button class="lang-globe-btn" id="langGlobeBtn" aria-label="Тіл таңдау">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <span id="langCode">ҚАЗ</span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="lang-globe-dropdown" id="langGlobeDropdown">
+          <button class="lang-drop-item active" data-lang-globe="kk">🇰🇿 Қазақша</button>
+          <button class="lang-drop-item" data-lang-globe="ru">🇷🇺 Русский</button>
+          <button class="lang-drop-item" data-lang-globe="zh">🇨🇳 中文</button>
+        </div>
       </div>
       <a href="#cta" class="nav-cta" data-i18n="nav.cta">Байланысу</a>
       <button class="nav-burger" aria-label="Мобильді мәзір" aria-expanded="false" id="burger">
@@ -1288,6 +1351,10 @@
               Instagram: @subhankulminayhan ↗
             </a>
           </div>
+          <a href="https://taplink.cc/minayhan" target="_blank" rel="noopener noreferrer" class="team-taplink">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+            Толық ақпарат алу →
+          </a>
         </div>
       </article>
 
@@ -1675,9 +1742,43 @@
     });
   }
 
+  const langLabels = { kk: 'ҚАЗ', ru: 'РУС', zh: '中文' };
+
+  const _applyLang = applyLang;
+  applyLang = function(lang) {
+    _applyLang(lang);
+    const codeEl = document.getElementById('langCode');
+    if (codeEl) codeEl.textContent = langLabels[lang];
+    document.querySelectorAll('.lang-drop-item').forEach(b => {
+      b.classList.toggle('active', b.dataset.langGlobe === lang);
+    });
+  };
+
   document.querySelectorAll('.lang-btn, .lang-btn-mobile').forEach(btn => {
     btn.addEventListener('click', () => applyLang(btn.dataset.lang));
   });
+
+  /* Globe dropdown */
+  const globeBtn = document.getElementById('langGlobeBtn');
+  const globeDrop = document.getElementById('langGlobeDropdown');
+  if (globeBtn && globeDrop) {
+    globeBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = globeDrop.classList.toggle('open');
+      globeBtn.classList.toggle('open', isOpen);
+    });
+    globeDrop.querySelectorAll('.lang-drop-item').forEach(btn => {
+      btn.addEventListener('click', () => {
+        applyLang(btn.dataset.langGlobe);
+        globeDrop.classList.remove('open');
+        globeBtn.classList.remove('open');
+      });
+    });
+    document.addEventListener('click', () => {
+      globeDrop.classList.remove('open');
+      globeBtn.classList.remove('open');
+    });
+  }
 
   applyLang(currentLang);
 
